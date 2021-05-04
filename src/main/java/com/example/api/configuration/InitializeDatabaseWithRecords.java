@@ -48,7 +48,7 @@ public class InitializeDatabaseWithRecords implements CommandLineRunner {
         addressService.insert(address);
         addressService.insert(address2);
         
-        costumerService.insert(customer);
+        costumerService.save(customer);
         
         Usuario usuario = new Usuario();
         Perfil perfil = new Perfil();

@@ -12,12 +12,8 @@ import com.example.api.repository.CustomerRepository;
 @Service
 public class CustomerService {
 
-	private CustomerRepository repository;
-
 	@Autowired
-	public CustomerService(CustomerRepository repository) {
-		this.repository = repository;
-	}
+	private CustomerRepository repository;
 
 	public Page<Customer> findAll(Pageable pageable) {
 		return repository.findAllByOrderByNameAsc(pageable);
@@ -27,8 +23,8 @@ public class CustomerService {
 		return repository.findById(id).orElseThrow(() -> new CostumerNotFoundException("Cliente nao encontrado na base dados!"));
 	}
 	
-	public void insert(Customer customer) {
-		repository.save(customer);
+	public Customer save(Customer customer) {
+		return repository.save(customer);
 	}
 	
 	public void remove(Long id) {
